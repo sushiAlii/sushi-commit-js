@@ -35,7 +35,7 @@ async function main() {
 
   try {
     const res = await anthropic.messages.create({
-      model: 'claude-3-5-sonnet-20241022',
+      model: 'claude-haiku-4-5-20251001',
       max_tokens: 1000,
       temperature: 0,
       system: `You are an expert software engineer. Analyze the provided 'git diff' text and generate a clean conventional commit message. 
