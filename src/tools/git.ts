@@ -1,4 +1,5 @@
 import { execSync } from 'child_process';
+import type { ExecutionResult } from '../types';
 
 export function getGitDiff(): string {
   try {
@@ -12,15 +13,21 @@ export function getGitDiff(): string {
   }
 }
 
-export function submitGitCommit(message: string): string {
+export function submitGitCommit(message: string): ExecutionResult {
   try {
     execSync('git add .');
     execSync(`git commit -m "${message}"`);
 
-    return `🍣 Success! Committed changes with message: "${message}"`;
+    return {
+      success: true,
+      message: `🍣 Success! Committed changes with message: "${message}"`,
+    };
   } catch (error) {
     console.error('Error submitting git commit:', error);
 
-    return `❌ Failed to execute commit command: ${error}`;
+    return {
+      success: false,
+      message: `❌ Failed to execute commit command: ${error}`,
+    };
   }
 }
