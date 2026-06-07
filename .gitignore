@@ -1,3 +1,6 @@
 node_modules/
 dist/
 .env
+
+# Open-source exclusions
+.DS_Store
