@@ -1,5 +1,6 @@
 import type z from 'zod';
 import type { CommitAnalysisSchema } from './schemas/commit';
+import type { AgentContextStatus } from './constants';
 
 export type CommitAnalysis = z.infer<typeof CommitAnalysisSchema>;
 
@@ -12,5 +13,5 @@ export interface ExecutionResult {
 export interface AgentContext {
   diff: string;
   analysis?: CommitAnalysis;
-  status: 'idle' | 'observing' | 'thinking' | 'executing' | 'completed' | 'failed';
+  status: AgentContextStatus;
 }
