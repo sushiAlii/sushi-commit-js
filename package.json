@@ -1,8 +1,20 @@
 {
   "name": "sushi-commit-js",
-  "module": "index.ts",
+  "version": "1.0.0",
+  "description": "An AI-powered commit message generator that analyzes your git diffs and crafts clean, conventional commit messages using the Anthropic API.",
   "type": "module",
-  "private": true,
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "bin": {
+    "sushi-commit": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "bun build ./src/index.ts --outfile=./dist/index.js --target=node",
+    "prepublishOnly": "bun run build"
+  },
   "devDependencies": {
     "@types/bun": "latest",
     "@typescript-eslint/eslint-plugin": "^8.60.1",
@@ -18,5 +30,8 @@
   "dependencies": {
     "@anthropic-ai/sdk": "^0.102.0",
     "zod": "^4.4.3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
